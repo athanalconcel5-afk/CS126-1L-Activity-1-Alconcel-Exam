@@ -1,0 +1,5 @@
+git add .
+git commit -m "Feat: Add Profile Card with text input and counter"
+git branch -M main
+git remote add origin <YOUR_GITHUB_REPO_URL>
+git push -u origin main
