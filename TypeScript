@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Button, Image, ScrollView, StyleSheet } from 'react-native';
 
 export default function App() {
-  // 1. State Variables (At least 2 variables used)
+  // 1. State Variables (At least 2 variables used for tracking name and count)
   const [name, setName] = useState('');
   const [count, setCount] = useState(0);
 
-  // 4. Dynamic messages based on counter
-  const message =
+  // 4. Dynamic messages based on counter state
+  const counterMessage =
     count > 0
       ? `${name || 'Someone'}, you tapped ${count} times!`
       : "Tap the + button to start";
@@ -25,24 +25,26 @@ export default function App() {
         style={styles.input}
       />
 
-      {/* 4. Conditional Rendering & Greeting Message */}
+      {/* 4. Conditional Rendering & Dynamic Greeting Message */}
       <Text style={styles.text}>
         {name === '' ? "Please enter your name" : `Hello, ${name}!`}
       </Text>
 
-      {/* Counter Message */}
-      <Text style={styles.text}>{message}</Text>
+      {/* Dynamic Counter Message */}
+      <Text style={styles.text}>{counterMessage}</Text>
 
       {/* 3. Buttons with onPress for Counter (+, -, reset) */}
       <View style={styles.buttonContainer}>
         <View style={styles.buttonWrapper}>
           <Button title="+" onPress={() => setCount(count + 1)} color="#007AFF" />
         </View>
+        
         <View style={styles.buttonWrapper}>
-          <Button title="-" onPress={() => setCount(count - 1)} color="#FF3B30" />
+          <Button title="-" onPress={() => setCount(count - 1)} color="#007AFF" />
         </View>
+        
         <View style={styles.buttonWrapper}>
-          <Button title="Reset" onPress={() => setCount(0)} color="#8E8E93" />
+          <Button title="RESET" onPress={() => setCount(0)} color="#007AFF" />
         </View>
       </View>
     </ScrollView>
@@ -65,23 +67,23 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: '#000',
     width: '80%',
     padding: 10,
     marginBottom: 15,
-    borderRadius: 5,
     backgroundColor: '#fff',
   },
   text: {
     fontSize: 16,
     marginVertical: 5,
     textAlign: 'center',
+    color: '#000',
   },
   buttonContainer: {
     marginTop: 15,
     width: '60%',
   },
   buttonWrapper: {
-    marginBottom: 10, // Creates spacing between native buttons
+    marginVertical: 4, // Prevents the buttons from gluing together into a single block
   },
 });
